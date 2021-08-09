@@ -88,7 +88,8 @@ export default function generateRoutes() {
 				}
 				routes.source[name] = routeUsefulPath;
 				const shortLink = name.replace(/([A-Z])/g,"-$1").toLowerCase()
-				routes.customRoutes[`/${routeUsefulPath}`] = `/${shortLink}`;
+				routes.customRoutes[`/${routeUsefulPath}`] =
+					`/${shortLink.startsWith('-') ? shortLink.slice(1) : shortLink}`;
 				routes.names.push(name);
 			}
 		}
